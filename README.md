@@ -1,5 +1,5 @@
 # GraphQL Tutorial
-This is an example of using Express and GraphQL base on the GraphQL JS tutorial.
+This is an example of implementing Express and GraphQL based on the GraphQL JS tutorial.
 ## Setup Instructions:
 
 Clone and cd into repository
@@ -9,7 +9,7 @@ node server.js
 ```
 Navigate to: http://localhost:4000/graphql 
 
-This opens up a GraphQL service that we can send queries to validate and execute like the examples below
+This opens up a GraphQL service that we can send queries to validate and execute like the two examples below:
 
 ```
 {
@@ -32,7 +32,7 @@ mutation {
   }
 }
 ```
-You can also run queries in the JS console of the browser like so:
+You can also execute queries in the JS console of the browser:
 ```
 var author = 'andy';
 var content = 'hope is a good thing';
