@@ -1,9 +1,9 @@
-var express = require('express');
-var graphqlHTTP = require('express-graphql');
-var { buildSchema } = require('graphql');
+let express = require('express');
+let graphqlHTTP = require('express-graphql');
+let { buildSchema } = require('graphql');
 
 // Construct a schema, using GraphQL schema language
-var schema = buildSchema(`
+let schema = buildSchema(`
   input MessageInput {
     content: String
     author: String
@@ -55,8 +55,8 @@ class RandomDie {
   }
 
   roll({numRolls}) {
-    var output = [];
-    for (var i = 0; i < numRolls; i++) {
+    let output = [];
+    for (let i = 0; i < numRolls; i++) {
       output.push(this.rollOnce());
     }
     return output;
@@ -64,10 +64,10 @@ class RandomDie {
 }
 
 // Maps username to content
-var fakeDatabase = {};
+let fakeDatabase = {};
 
 // The root provides the top-level API endpoints
-var root = {
+let root = {
   getMessage: function ({id}) {
     if (!fakeDatabase[id]) {
       throw new Error('No message exists with id: ' + id);
@@ -75,7 +75,7 @@ var root = {
     return new Message(id, fakeDatabase[id]);
   },
   createMessage: function ({input}) {
-    var randomId = require('crypto').randomBytes(10).toString('hex');
+    let randomId = require('crypto').randomBytes(10).toString('hex');
     fakeDatabase[randomId] = input;
     return new Message(randomId, input);
   },
@@ -101,7 +101,7 @@ var root = {
   }
 };
 
-var app = express();
+let app = express();
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
@@ -131,9 +131,9 @@ mutation {
 }
 
       *THIS CAN BE LOGGED IN CONSOLE*
-var dice = 3;
-var sides = 6;
-var query = `query RollDice($dice: Int!, $sides: Int) {
+let dice = 3;
+let sides = 6;
+let query = `query RollDice($dice: Int!, $sides: Int) {
   rollDice(numDice: $dice, numSides: $sides)
 }`;
 
